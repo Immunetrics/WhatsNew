@@ -25,7 +25,9 @@ public struct WhatsNew {
         // Choose based on the selected presentation option.
         switch option {
         case .debug: return true
-        case .never: return false
+        case .never:
+            markCurrentVersionAsPresented()
+            return false
         case .majorVersion: return didChangeMajorVersion(previous: previousAppVersion, current: appVersion)
         case .always: return didUpdate
         }
